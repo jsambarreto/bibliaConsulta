@@ -12,7 +12,7 @@ def find_term_bible(book: str, term: str):
         for i in range(len(web[book][1])):
             find = str(web[book][1][i+1])
             if term in find:
-                print(web['John'][1][i+1])
+                st.write(web['John'][1][i+1])
                 j+=1
         return f'Termo "{term}", ocorre {j} vezes no livro de {book}'
     else:
