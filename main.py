@@ -6,10 +6,9 @@ book_=''
 term_=''
 
 def camel_case(s):
-  s = sub(r"(_|-)+", " ", s).title().replace(" ", "")
+  s = sub(r"(_|-)+", " ", s).title()
   return ''.join([s[0].upper(), s[1:]])
 
-#with st.echo():
 st.text_input("Please, enter with Book", key="book")
 st.text_input("Please, enter with term for find", key="term")
 
@@ -25,8 +24,13 @@ def find_term_bible(book: str, term: str):
         return f'Termo "{term}", ocorre {j} vezes no livro de {book}'
     else:
         return f'Informe os termos para busca'  
-if st.session_state.book!= '':
-    book_=camel_case(st.session_state.book)
+#if st.session_state.book!= '':
+#    book_=camel_case(st.session_state.book)
 
+st.write(find_term_bible(book=st.session_state.book,term=st.session_state.term))
+st.write("List of Books")
 
-st.write(find_term_bible(book=book_,term=st.session_state.term))
+books = read_web()
+
+for j in range(len(books.books)):
+    st.write(books.books[j].short_name)
